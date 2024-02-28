@@ -2,7 +2,11 @@ extends Node3D
 
 
 @export var lamp_level : int
+var working : bool = false
+@export var turned_on : bool = false
 
+signal light_turned_on
+signal light_turned_off
 
 
 func _ready():
@@ -28,17 +32,58 @@ func _physics_process(delta):
 	
 	
 	var lower_or_higher = current_player_spot.y - self.global_position.y
-	#
 	
-	if distance_to_player > 180:
+	
+	if turned_on == false:
+		$CSGBox3D.visible = false
 		$OmniLight3D.visible = false
-	elif distance_to_player < 180:
-		if lower_or_higher < 0:
-			$OmniLight3D.visible = true
+	elif turned_on == true:
+		if distance_to_player > 180:
+			$OmniLight3D.visible = false
+			$CSGBox3D.visible = false
+		elif distance_to_player < 180:
+			if lower_or_higher < 0:
+				$OmniLight3D.visible = true
+				$CSGBox3D.visible = true
+
+
+
+
+func update_state():
+	if turned_on == false:
+		Events.emit_signal("light_turned_off")
+		$light_map_menu.visible = false
+		$light_map_menu2.visible = true
+	elif turned_on == true:
+		Events.emit_signal("light_turned_on")
+		$light_map_menu.visible = true
+		$light_map_menu2.visible = false
+	
+	print(self , turned_on)
+
+
+
+func change_light_state():
+	if turned_on == true:
+		turned_on = false
+		update_state()
+		
+	elif turned_on == false:
+		turned_on = true
+		update_state()
+	
+
+
+
+
+
+
 
 
 func change_camera(current):
-	if lamp_level == Events.lamp_level_selected :
-		$light_map_menu.visible = true
-	else :
-		$light_map_menu.visible = false
+	pass
+	#if lamp_level == Events.lamp_level_selected :
+		#$light_map_menu.visible = true
+	#else :
+		#$light_map_menu.visible = false
+

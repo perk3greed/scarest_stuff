@@ -68,25 +68,31 @@ func _ready():
 
 func _process(delta):
 	
-	#sprint_ui.value = 100 - (current_sprint *12.5)
-	Events.current_pb_magazin = pb_magazine
-	Events.current_pb_ammo = pb_ammo
-	Events.current_weapon_in_hands = current_weapon
+	if Input.is_action_just_pressed("L"):
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
-	
-	
+	if Input.is_action_just_pressed("K"):
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
 
 
 
 
 
 func _unhandled_input(event):
-
+	
+	if Events.floating_camera_is_active == true:
+		return
+	
 	if event is InputEventMouseMotion:
 		head.rotate_y(-event.relative.x * SENSITIVITY*0.1)
 		camera.rotate_x(-event.relative.y * SENSITIVITY*0.1)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-60), deg_to_rad(80))
 		
+
+
+
+
 
 
 func _physics_process(delta):
@@ -142,12 +148,6 @@ func _physics_process(delta):
 				hand_touched_what.interact()
 				Events.emit_signal("object_interacted_with", hand_touched_what)
 
-
-	if Input.is_action_just_pressed("L"):
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	
-	if Input.is_action_just_pressed("K"):
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 	
 	

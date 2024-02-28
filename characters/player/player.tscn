@@ -87,6 +87,7 @@ transform = Transform3D(1, 0, 2.13163e-13, 0, 1, 0, -2.13163e-13, 0, 1, 0, 0.180
 rotation_order = 0
 cull_mask = 1048557
 current = true
+size = 8.0
 
 [node name="laser_pointer" parent="." instance=ExtResource("3_niyui")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.960557, 0)

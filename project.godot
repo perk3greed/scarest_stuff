@@ -33,7 +33,7 @@ project/assembly_name="zombi_bo1"
 
 [editor]
 
-movie_writer/movie_file="C:/Users/418/godot4/videos/zomboid_bo2.avi"
+movie_writer/movie_file="C:/Users/418/godot4/videos/scary.avi"
 movie_writer/disable_vsync=true
 
 [editor_plugins]
