@@ -4,7 +4,7 @@ var speed
 const WALK_SPEED = 4
 const SPRINT_SPEED = 8
 const JUMP_VELOCITY = 9
-const SENSITIVITY = 0.01
+var sensitivity = 0.01
 const sprint_time :float = 99
 var current_sprint :float = 0
 var shotgun_ammo :int = 200
@@ -28,6 +28,7 @@ const BOB_AMP = 0.08
 var t_bob = 0.0
 
 const BASE_FOV = 75.0
+const FOV_ZOOM = 30.0
 const FOV_CHANGE = 1.0
 
 const raycast_hit_point = preload("res://stuff/raycast_hit.tscn")
@@ -74,6 +75,12 @@ func _process(delta):
 	if Input.is_action_just_pressed("K"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
+	if Input.is_action_just_pressed("I"):
+		sensitivity -= 0.005
+	
+	if Input.is_action_just_pressed("O"):
+		sensitivity += 0.005
+	
 	if Input.is_action_just_pressed("6"):
 		if flying_active == false:
 			flying_active = true
@@ -95,8 +102,8 @@ func _unhandled_input(event):
 		return
 	
 	if event is InputEventMouseMotion:
-		head.rotate_y(-event.relative.x * SENSITIVITY*0.1)
-		camera.rotate_x(-event.relative.y * SENSITIVITY*0.1)
+		head.rotate_y(-event.relative.x * sensitivity*0.1)
+		camera.rotate_x(-event.relative.y * sensitivity*0.1)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-60), deg_to_rad(80))
 		
 
@@ -182,8 +189,10 @@ func _physics_process(delta):
 	camera.transform.origin = _headbob(t_bob)
 	
 	# FOV
-	var velocity_clamped = clamp(velocity.length(), 0.5, SPRINT_SPEED * 2)
+	var velocity_clamped = clamp(Vector2(velocity.x, velocity.z).length(), 0.5, SPRINT_SPEED * 2)
 	var target_fov = BASE_FOV + FOV_CHANGE * velocity_clamped
+	if Input.is_action_pressed("zoom"): #zoomy zooms
+		target_fov = FOV_ZOOM
 	real_camera.fov = lerp(real_camera.fov, target_fov, delta * 8.0)
 	
 	move_and_slide()
