@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://c7c4rtu5tiusc"]
+
+[ext_resource type="Texture2D" uid="uid://dm6sw7xc1ikc7" path="res://textures/whatiuse/stuff/marble_deepsea.png" id="1_p1tya"]
+[ext_resource type="Texture2D" uid="uid://cj00j4yuemt83" path="res://textures/whatiuse/fn_or_n_files/marble_deepsea_n.png" id="2_6mnu7"]
+
+[resource]
+albedo_texture = ExtResource("1_p1tya")
+normal_enabled = true
+normal_texture = ExtResource("2_6mnu7")
+texture_filter = 2

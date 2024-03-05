@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://ysqmpygt7pyl"]
+
+[ext_resource type="Texture2D" uid="uid://cs4kkess25qko" path="res://textures/whatiuse/stuff/marble_divider_cursed.png" id="1_0fujy"]
+[ext_resource type="Texture2D" uid="uid://bx5ldxvclgw5o" path="res://textures/whatiuse/fn_or_n_files/marble_divider_cursed_n.png" id="2_aoa7m"]
+
+[resource]
+albedo_texture = ExtResource("1_0fujy")
+normal_enabled = true
+normal_texture = ExtResource("2_aoa7m")
+texture_filter = 2

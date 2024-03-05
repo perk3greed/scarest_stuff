@@ -3,7 +3,7 @@ extends Node3D
 
 @export var lamp_level : int
 var working : bool = false
-@export var turned_on : bool = false
+@export var turned_on : bool = true
 
 signal light_turned_on
 signal light_turned_off

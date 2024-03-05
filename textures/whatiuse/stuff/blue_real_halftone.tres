@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://b2hd1j4sj03bu"]
+
+[ext_resource type="Texture2D" uid="uid://c2twotfjwd27h" path="res://textures/whatiuse/stuff/blue_real_halftone.png" id="1_yn58m"]
+[ext_resource type="Texture2D" uid="uid://mci1rufdnp0" path="res://textures/whatiuse/fn_or_n_files/blue_real_halftone_n.png" id="2_fmlcn"]
+
+[resource]
+albedo_texture = ExtResource("1_yn58m")
+normal_enabled = true
+normal_texture = ExtResource("2_fmlcn")
+texture_filter = 2

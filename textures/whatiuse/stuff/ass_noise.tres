@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://dndwgpcicaoqp"]
+
+[ext_resource type="Texture2D" uid="uid://dt3af5xu5whcp" path="res://textures/whatiuse/stuff/ass_noise.png" id="1_y806h"]
+[ext_resource type="Texture2D" uid="uid://cdg8jfihe60je" path="res://textures/whatiuse/fn_or_n_files/ass_noise_n.png" id="2_5p7xf"]
+
+[resource]
+albedo_texture = ExtResource("1_y806h")
+normal_enabled = true
+normal_texture = ExtResource("2_5p7xf")
+texture_filter = 2

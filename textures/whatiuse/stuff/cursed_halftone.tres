@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://ckt52ps10q04x"]
+
+[ext_resource type="Texture2D" uid="uid://dm0qq450jndst" path="res://textures/whatiuse/stuff/cursed_halftone.png" id="1_s5xly"]
+[ext_resource type="Texture2D" uid="uid://bqpuilh7xc4bm" path="res://textures/whatiuse/fn_or_n_files/cursed_halftone_n.png" id="2_lvawb"]
+
+[resource]
+albedo_texture = ExtResource("1_s5xly")
+normal_enabled = true
+normal_texture = ExtResource("2_lvawb")
+texture_filter = 2

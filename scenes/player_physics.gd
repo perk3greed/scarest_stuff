@@ -42,7 +42,7 @@ var default_target_pos
 var current_weapon :String 
 
 var floating_camera_active :bool = false
-
+var flying_active :bool = false
 
 
 @onready var head = $Head
@@ -73,10 +73,20 @@ func _process(delta):
 	
 	if Input.is_action_just_pressed("K"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	
+	if Input.is_action_just_pressed("6"):
+		if flying_active == false:
+			flying_active = true
+		elif flying_active == true:
+			flying_active = false
+	
+	if Input.is_action_just_pressed("5"):
+		if flying_active == true:
+			velocity.y -= JUMP_VELOCITY
 
-
-
-
+	if Input.is_action_just_pressed("4"):
+		if flying_active == true:
+			velocity.y += JUMP_VELOCITY
 
 
 func _unhandled_input(event):
@@ -121,12 +131,14 @@ func _physics_process(delta):
 
 	
 	if not is_on_floor():
-		velocity.y -= gravity * delta
+		if flying_active == false:
+			velocity.y -= gravity * delta
 
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
-	
+
+
 	if Input.is_action_pressed("SHIFT"):
 		if sprint_time > current_sprint:
 			current_sprint += delta
@@ -192,7 +204,7 @@ func _headbob(time) -> Vector3:
 	pos.y = sin(time * BOB_FREQ) * BOB_AMP
 	pos.x = cos(time * BOB_FREQ / 2) * BOB_AMP
 	return pos
-
+	
 
 func change_camera_to_floating(floating):
 	if floating == true:

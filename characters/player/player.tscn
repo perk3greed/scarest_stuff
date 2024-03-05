@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://b3p3kc4406kia" path="res://characters/player_hands/laser_pointer.tscn" id="3_niyui"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ipieo"]
-radius = 0.27388
-height = 1.79899
+radius = 0.45
+height = 2.73152
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_20fxv"]
 shader = ExtResource("2_0ewle")
@@ -32,14 +32,14 @@ script = ExtResource("1_pxgo1")
 [node name="Node3D" type="Node3D" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="Node3D"]
-transform = Transform3D(-0.994314, 0, 0.10649, 0, 1, 0, -0.10649, 0, -0.994314, 0, 0.405443, -1.93085)
+transform = Transform3D(-0.994314, 0, 0.10649, 0, 1, 0, -0.10649, 0, -0.994314, 0, 2.75597, -4.63609)
 
 [node name="player_cl" type="CollisionShape3D" parent="." groups=["player"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.386517, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.816703, 0)
 shape = SubResource("CapsuleShape3D_ipieo")
 
 [node name="Head" type="Node3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.825654, -0.068)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 2, -0.295)
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="Head"]
 light_mask = 3
@@ -83,7 +83,7 @@ spot_range = 25.0
 spot_angle = 30.0
 
 [node name="Camera3D" type="Camera3D" parent="Head/camera_crane"]
-transform = Transform3D(1, 0, 2.13163e-13, 0, 1, 0, -2.13163e-13, 0, 1, 0, 0.180004, 0)
+transform = Transform3D(1, 0, 2.13163e-13, 0, 1, 0, -2.13163e-13, 0, 1, 0, 0, 0)
 rotation_order = 0
 cull_mask = 1048557
 current = true

@@ -1,0 +1,14 @@
+[remap]
+
+importer="qodot.map"
+type="Resource"
+uid="uid://c68b6tc4g1f64"
+path="res://.godot/imported/office_cyber.map-42e3d7278699369c201b9426676d68f6.tres"
+
+[deps]
+
+source_file="res://characters/state_machine/office_cyber.map"
+dest_files=["res://.godot/imported/office_cyber.map-42e3d7278699369c201b9426676d68f6.tres"]
+
+[params]
+
