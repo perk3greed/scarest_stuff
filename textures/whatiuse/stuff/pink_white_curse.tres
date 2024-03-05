@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://c08kwmtvfqwg6"]
+
+[ext_resource type="Texture2D" uid="uid://dvffspcahpy0y" path="res://textures/whatiuse/stuff/pink_white_curse.png" id="1_lb4uh"]
+[ext_resource type="Texture2D" uid="uid://c07wnpnacjwsa" path="res://textures/whatiuse/fn_or_n_files/pink_white_curse_n.png" id="2_syrdp"]
+
+[resource]
+albedo_texture = ExtResource("1_lb4uh")
+normal_enabled = true
+normal_texture = ExtResource("2_syrdp")
+texture_filter = 2

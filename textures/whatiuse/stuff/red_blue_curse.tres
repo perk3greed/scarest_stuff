@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://diya5q1w7wn5o"]
+
+[ext_resource type="Texture2D" uid="uid://dv2bxc4m0cbv8" path="res://textures/whatiuse/stuff/red_blue_curse.png" id="1_tc7dq"]
+[ext_resource type="Texture2D" uid="uid://ttqu55utsu0m" path="res://textures/whatiuse/fn_or_n_files/red_blue_curse_n.png" id="2_88ki6"]
+
+[resource]
+albedo_texture = ExtResource("1_tc7dq")
+normal_enabled = true
+normal_texture = ExtResource("2_88ki6")
+texture_filter = 2

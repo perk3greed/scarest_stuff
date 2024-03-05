@@ -7,7 +7,7 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ipieo"]
 radius = 0.45
-height = 2.73152
+height = 2.2109
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_20fxv"]
 shader = ExtResource("2_0ewle")
@@ -35,11 +35,11 @@ script = ExtResource("1_pxgo1")
 transform = Transform3D(-0.994314, 0, 0.10649, 0, 1, 0, -0.10649, 0, -0.994314, 0, 2.75597, -4.63609)
 
 [node name="player_cl" type="CollisionShape3D" parent="." groups=["player"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.816703, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55907, 0)
 shape = SubResource("CapsuleShape3D_ipieo")
 
 [node name="Head" type="Node3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 2, -0.295)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.64348, -0.295)
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="Head"]
 light_mask = 3
