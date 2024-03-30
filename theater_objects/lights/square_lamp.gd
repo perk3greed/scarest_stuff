@@ -3,7 +3,10 @@ extends Node3D
 
 @export var lamp_level : int
 var working : bool = false
+var lamp_disct_current : int = 180 
+
 @export var turned_on : bool = true
+
 
 signal light_turned_on
 signal light_turned_off
@@ -12,6 +15,9 @@ signal light_turned_off
 func _ready():
 	self.visible= true
 	Events.connect("change_current_camera" ,change_camera)
+	Events.connect("lamp_light_changed", adjust_light_force)
+	Events.connect("lamp_distance_changed", adjust_lamp_distance)
+
 
 func _physics_process(delta):
 	
@@ -38,10 +44,10 @@ func _physics_process(delta):
 		$CSGBox3D.visible = false
 		$OmniLight3D.visible = false
 	elif turned_on == true:
-		if distance_to_player > 180:
+		if distance_to_player > lamp_disct_current:
 			$OmniLight3D.visible = false
 			$CSGBox3D.visible = false
-		elif distance_to_player < 180:
+		elif distance_to_player < lamp_disct_current:
 			if lower_or_higher < 0:
 				$OmniLight3D.visible = true
 				$CSGBox3D.visible = true
@@ -74,9 +80,11 @@ func change_light_state():
 	
 
 
+func adjust_light_force(light_power):
+	$OmniLight3D.omni_range = int(light_power)
 
-
-
+func adjust_lamp_distance(lamp_dist):
+	lamp_disct_current = lamp_dist
 
 
 

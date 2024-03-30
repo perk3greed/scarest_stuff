@@ -5,6 +5,8 @@ signal object_interacted_with(owner_of_node)
 signal change_current_camera(floating)
 signal light_turned_on
 signal light_turned_off
+signal lamp_light_changed(light_force)
+signal lamp_distance_changed(lmp_dist)
 
 
 var interacted_object 

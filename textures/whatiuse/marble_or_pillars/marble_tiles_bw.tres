@@ -3,4 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dmxdouo82epo5" path="res://textures/whatiuse/marble_or_pillars/marble_tiles_bw.png" id="1_ycu8j"]
 
 [resource]
+transparency = 1
+blend_mode = 1
+albedo_color = Color(0, 0.537255, 0.47451, 1)
 albedo_texture = ExtResource("1_ycu8j")

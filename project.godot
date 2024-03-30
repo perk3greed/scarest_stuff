@@ -25,6 +25,7 @@ Events="*res://scenes/events.gd"
 
 window/size/viewport_width=1600
 window/size/viewport_height=900
+window/size/borderless=true
 window/vsync/vsync_mode=0
 
 [dotnet]
@@ -33,8 +34,10 @@ project/assembly_name="zombi_bo1"
 
 [editor]
 
+movie_writer/mjpeg_quality=1.0
 movie_writer/movie_file="C:/Users/418/godot4/videos/scary.avi"
 movie_writer/disable_vsync=true
+movie_writer/fps=30
 
 [editor_plugins]
 
@@ -168,7 +171,7 @@ O={
 }
 zoom={
 "deadzone": 0.5,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194328,"key_label":0,"unicode":0,"echo":false,"script":null)
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":4,"position":Vector2(112, 17),"global_position":Vector2(116, 58),"factor":1.0,"button_index":3,"canceled":false,"pressed":true,"double_click":false,"script":null)
 ]
 }
 
