@@ -3,7 +3,7 @@ extends Node3D
 
 var player_position 
 var amount_of_lights_turned_on : int = 0 
-
+var interface_on : bool = false
 
 
 var rng = RandomNumberGenerator.new()
@@ -17,7 +17,7 @@ var rng = RandomNumberGenerator.new()
 var current_camera_floating : bool
 
 signal change_current_camera
-
+signal change_interace_visibility
 
 
 func _ready():
@@ -26,6 +26,9 @@ func _ready():
 
 
 func _process(delta):
+	if Input.is_action_just_pressed("V"):
+		Events.emit_signal("change_interace_visibility")
+	
 	if Input.is_action_just_pressed("u"):
 		if current_camera_floating == false: 
 			current_camera_floating = true

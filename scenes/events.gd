@@ -7,7 +7,7 @@ signal light_turned_on
 signal light_turned_off
 signal lamp_light_changed(light_force)
 signal lamp_distance_changed(lmp_dist)
-
+signal change_interace_visibility
 
 var interacted_object 
 
