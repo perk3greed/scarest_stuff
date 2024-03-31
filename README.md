@@ -1,6 +1,8 @@
 # scary vhs demo
 
+we are working on a ps1 inspired immersive sim game, with horror elements, that will be accesible and working in browser on most devices
 
+the game puts you in a shoes of a thief trying to break into an office of an mysterious company just to do your usual job and steal some documents, but you notice more and more things that just dont feel right. 
 
 
 
