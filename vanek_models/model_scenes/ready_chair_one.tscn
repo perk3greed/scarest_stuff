@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4fk3n70b5qvq"]
+
+[ext_resource type="PackedScene" uid="uid://d0xsenq6b2oq7" path="res://vanek_models/stul.gltf" id="1_8tvu0"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_smrkc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ptsfl"]
+size = Vector3(0.707062, 0.590668, 0.612061)
+
+[node name="blockbench_export" instance=ExtResource("1_8tvu0")]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.480377, 0)
+physics_material_override = SubResource("PhysicsMaterial_smrkc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.175735, -0.121391, 0.243774)
+shape = SubResource("BoxShape3D_ptsfl")
