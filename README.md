@@ -1,49 +1,31 @@
-# bo2
+# scary vhs demo
+
+we are working on a ps1 inspired immersive sim game, with horror elements, that will be accesible and working in browser on most devices
+
+the game puts you in a shoes of a thief trying to break into an office of an mysterious company just to do your usual job and steal some documents, but you notice more and more things that just dont feel right. 
 
 
-tasks 
-НУЛЕВАЯ ФАЗА, ЗАДАЧИ НЕ ПРИОРИТЕТНЫЕ, НО ИХ МОЖНО ДЕЛАТЬ ЕСЛИ ХОЧЕТСЯ, А НА ДРУГОЕ НЕТ МОТИВАЦИИ 
 
-01 допольнительные модели монстров (гоблины, боссы, быки тупо) 
 
-02 допольнительные модели оружия (лук, волшебная палка - stuff, лазерная пушка, ебр/дмр, автомат, двустволка, револьвер) 
 
-03 предлагайте, думайте я всегда за любые идеи и вашу работу над проектом
 
-ПЕРВАЯ ФАЗА, ПРИОРИТЕТНЫЕ ЗАДАЧИ
 
-1 добавить пп 
-	- ждем модель от артема
+![shot6](https://github.com/perk3greed/scarest_stuff/blob/master/stuff/screenshots/shot6.png?raw=true)
 
-~~2 подчинить дробовик\
-	- я не знаю что с ним, он раньше работал, сейчас через жопу\
-\
-3 исправить look\_at() в скриптах противников, так что бы они не крутились вверх/вниз когда игрок подходит к ним (сделать look\_at() на проекцию)~~
 
-4 придумать милишную боевку (уже есть рабочий меч) я вообще над ней не думал
+![shot5](https://github.com/perk3greed/scarest_stuff/blob/master/stuff/screenshots/shot5.png?raw=true)
 
-6 доработать зомби, скорее всего нужно просить артема доделать/переделать модель, сделать ее более артистичной, либо нужно собрать консилиум и думать о изменениях которые сделают их более интересными, может добавить деш
 
-7 додлелать анимации для пб, создать плейсхолдер анимации для дробовика, его перезарядки, его заряжания, освещение при стрельбе, декалы
 
-8 забалнсить стрельбу пб - отдачу и скорость анимаций
+![shot2](https://github.com/perk3greed/scarest_stuff/blob/master/stuff/screenshots/shot2.png?raw=true)
 
-ВТОРАЯ ФАЗА, СКОРЕЕ ВСЕГО ТОЛЬКО ПОСЛЕ ПОЛНОГО ЗАВЕРШЕНИЯ ПЕРВОЙ ФАЗЫ
 
-9 добавить клаттер/обьекты на уровень - столы, стулья, кровати, шкафы и тд. 
+![shot1](https://github.com/perk3greed/scarest_stuff/blob/master/stuff/screenshots/shot1.png?raw=true)
 
-10 добавить обьекты поднимания оружия (как пример дробовика) 
 
-11 добавить баланс дверей, добавить покупаемый апгрейты в комнаты, добавить оружия в комнаты, подумать над системой ключей и лута
 
-12 проверить передвижение игрка, сделать его более fun and interactive 
+![shot3](https://github.com/perk3greed/scarest_stuff/blob/master/stuff/screenshots/shot3.png?raw=true)
 
-13 проверить баги монстров, оптимизировать перформанс зомби, проерить что монстры не будут проваливаться через стены 
 
-14 добавить музыку, эмбиент, звуки шагов, интеракций, джинглы апгрейдов, звуки монстров, звуки стрельбы, звуки анимации оружия 
-
-15 добавить анимацию спавна, смерти монстров, анимацию получения урона, анимацию атаки монстров
-
-16 улучшить вижуал, освещение, цвета, шейдеры, текстуры оружия, текстуры рук
-
+![shot4](https://github.com/perk3greed/scarest_stuff/blob/master/stuff/screenshots/shot4.png?raw=true)
 
