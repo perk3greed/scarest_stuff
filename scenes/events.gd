@@ -12,6 +12,7 @@ signal change_interace_visibility
 var interacted_object 
 
 var current_player_position : Vector3
+var player_rid : RID
 
 var floating_camera_is_active : bool 
 var lamp_level_selected : int

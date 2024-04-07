@@ -45,7 +45,10 @@ func _physics_process(delta):
 		elif distance_to_player < lamp_disct_current:
 			if lower_or_higher < 0:
 				var query = PhysicsRayQueryParameters3D.create(
-					global_position, Events.current_player_position, 0b1)
+					global_position,
+					Events.current_player_position,
+					0b1,
+					[Events.player_rid])
 				# 0b1 mask to only have the layer 1 mask and not the default all
 				# as the player is in layer 2, this should hopefully only give wall
 				# collisions.

@@ -61,7 +61,7 @@ signal object_interacted_with(owner_of_node)
 
 func _ready():
 	Events.connect("change_current_camera", change_camera_to_floating)
-	
+	Events.player_rid = get_rid()
 	
 	
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

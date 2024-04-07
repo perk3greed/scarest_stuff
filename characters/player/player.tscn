@@ -27,7 +27,6 @@ environment = SubResource("Environment_7q4ol")
 
 [node name="player" type="CharacterBody3D" groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.543212, 0)
-collision_layer = 2
 script = ExtResource("1_pxgo1")
 
 [node name="Node3D" type="Node3D" parent="."]
