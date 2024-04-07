@@ -22,6 +22,7 @@ func _ready():
 
 
 func _physics_process(delta):
+	var space_state = get_world_3d().direct_space_state
 	var current_player_spot = Events.current_player_position
 	var bruh_x = (current_player_spot.x - self.global_position.x)
 	var bruh_y = (current_player_spot.y - self.global_position.y)
@@ -43,11 +44,18 @@ func _physics_process(delta):
 			$Buzz_sound_player.stop()
 		elif distance_to_player < lamp_disct_current:
 			if lower_or_higher < 0:
-				$OmniLight3D.visible = true
-				$CSGBox3D.visible = true
-				if (!already_blinked):
-					already_blinked = true
-					light_on_sound()
+				var query = PhysicsRayQueryParameters3D.create(
+					global_position, Events.current_player_position, 0b1)
+				# 0b1 mask to only have the layer 1 mask and not the default all
+				# as the player is in layer 2, this should hopefully only give wall
+				# collisions.
+				var result = space_state.intersect_ray(query)
+				if (result.is_empty()):
+					$OmniLight3D.visible = true
+					$CSGBox3D.visible = true
+					if (!already_blinked):
+						already_blinked = true
+						light_on_sound()
 
 func update_state():
 	if turned_on == false:
