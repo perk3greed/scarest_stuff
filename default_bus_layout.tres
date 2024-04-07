@@ -1,0 +1,30 @@
+[gd_resource type="AudioBusLayout" load_steps=3 format=3 uid="uid://cdug30o6tsc68"]
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_vwqf0"]
+resource_name = "Reverb"
+room_size = 0.51
+damping = 0.8
+wet = 0.23
+
+[sub_resource type="AudioEffectEQ" id="AudioEffectEQ_vkbm1"]
+resource_name = "EQ"
+band_db/32_hz = -28.0
+band_db/100_hz = -16.0
+
+[resource]
+bus/1/name = &"Lamps on"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = -4.24723
+bus/1/send = &"Master"
+bus/1/effect/0/effect = SubResource("AudioEffectReverb_vwqf0")
+bus/1/effect/0/enabled = true
+bus/2/name = &"Lamps buzz"
+bus/2/solo = false
+bus/2/mute = false
+bus/2/bypass_fx = false
+bus/2/volume_db = -4.25003
+bus/2/send = &"Master"
+bus/2/effect/0/effect = SubResource("AudioEffectEQ_vkbm1")
+bus/2/effect/0/enabled = true

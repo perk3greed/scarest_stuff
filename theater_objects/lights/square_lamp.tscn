@@ -1,7 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://di21gf0o1s51a"]
+[gd_scene load_steps=11 format=3 uid="uid://di21gf0o1s51a"]
 
 [ext_resource type="Script" path="res://theater_objects/lights/square_lamp.gd" id="1_dsewe"]
 [ext_resource type="Script" path="res://theater_objects/lights/light_state_changer.gd" id="2_qkxo3"]
+[ext_resource type="AudioStream" uid="uid://c5igbsba86tg7" path="res://sounds_n_music/lampochka_activate_1.wav" id="3_sal31"]
+[ext_resource type="Script" path="res://theater_objects/lights/Activated_sound_player.gd" id="4_x147f"]
+[ext_resource type="Script" path="res://theater_objects/lights/Buzz_sound_player.gd" id="5_grays"]
+[ext_resource type="AudioStream" uid="uid://cqvheyj6g7wav" path="res://sounds_n_music/lampochka_bzzzt.wav" id="5_m11fl"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ocpvh"]
 emission_enabled = true
@@ -52,3 +56,19 @@ script = ExtResource("2_qkxo3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("BoxShape3D_0i6gc")
+
+[node name="Activated_sound_player" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_sal31")
+attenuation_model = 1
+max_polyphony = 5
+script = ExtResource("4_x147f")
+
+[node name="Buzz_sound_player" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_m11fl")
+attenuation_model = 1
+volume_db = -12.0
+unit_size = 4.0
+max_db = 0.0
+max_polyphony = 4
+bus = &"Lamps buzz"
+script = ExtResource("5_grays")
