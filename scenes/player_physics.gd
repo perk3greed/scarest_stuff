@@ -39,7 +39,7 @@ var maxHorizontalOffset = 5
 var maxVerticalOffset = 5
 var target_pos
 var default_target_pos
-
+var light_on : bool = false
 var current_weapon :String 
 
 var floating_camera_active :bool = false
@@ -68,6 +68,14 @@ func _ready():
 	$Head/SubViewportContainer.size = DisplayServer.window_get_size()
 
 func _process(delta):
+	
+	if Input.is_action_just_pressed("F"):
+		if light_on == true:
+			$Head/camera_crane/SpotLight3D.light_energy = 0
+			light_on = false
+		elif light_on == false:
+			$Head/camera_crane/SpotLight3D.light_energy = 3
+			light_on = true
 	
 	if Input.is_action_just_pressed("L"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
