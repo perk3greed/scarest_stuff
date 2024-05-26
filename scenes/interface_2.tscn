@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=3 uid="uid://o3ttjwt3fapj"]
+
+[ext_resource type="Script" path="res://scenes/interface_2.gd" id="1_dxy8q"]
+
+[node name="interface2" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dxy8q")
+
+[node name="interact_label" type="RichTextLabel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.649
+anchor_top = 0.551
+anchor_right = 0.649
+anchor_bottom = 0.551
+offset_left = -8.40002
+offset_top = -5.89999
+offset_right = 441.6
+offset_bottom = 194.1
+theme_override_colors/default_color = Color(0.709804, 0.129412, 0.337255, 1)
+theme_override_font_sizes/normal_font_size = 64
+text = "INTERACT
+"
+
+[node name="output" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 782.0
+offset_top = 66.0
+offset_right = 1558.0
+offset_bottom = 223.0
+theme_override_colors/default_color = Color(0.278431, 0.705882, 0.454902, 1)
+theme_override_font_sizes/normal_font_size = 64
+text = "gfdgssssssssgd"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

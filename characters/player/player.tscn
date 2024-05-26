@@ -65,7 +65,7 @@ transform = Transform3D(1, 0, 6.3573e-08, 0, 1, 0, -6.3573e-08, 0, 1, 0, 0, 0)
 
 [node name="hand_raycast" type="RayCast3D" parent="Head/camera_crane"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0706417, -0.189013, -0.11773)
-target_position = Vector3(0, 0, -2)
+target_position = Vector3(0, 0, -3)
 collision_mask = 2
 hit_from_inside = true
 debug_shape_custom_color = Color(0.25098, 0.333333, 1, 1)
@@ -91,4 +91,3 @@ size = 8.0
 [node name="laser_pointer" parent="." instance=ExtResource("3_niyui")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.960557, 0)
 top_level = true
-visible = false

@@ -40,10 +40,12 @@ var maxVerticalOffset = 5
 var target_pos
 var default_target_pos
 var light_on : bool = false
-var current_weapon :String 
+var current_weapon : String 
+var current_inv_item : int 
 
-var floating_camera_active :bool = false
-var flying_active :bool = false
+
+var floating_camera_active : bool = false
+var flying_active : bool = false
 
 @onready var head = $Head
 @onready var camera = $Head/camera_crane
@@ -54,6 +56,8 @@ var interact_prompt : bool
 
 signal action_use_pressed
 signal object_interacted_with(owner_of_node)
+signal item_scrolled_up
+signal item_scrolled_down
 
 func _ready():
 	Events.connect("change_current_camera", change_camera_to_floating)
@@ -96,7 +100,7 @@ func _process(delta):
 		if flying_active == true:
 			velocity.y += JUMP_VELOCITY
 	
-	camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-60), deg_to_rad(80))
+	camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-80), deg_to_rad(85))
 	camera.rotation.y = 0
 
 func _unhandled_input(event):	
@@ -114,9 +118,11 @@ func _physics_process(delta):
 	
 	hand_raycast.force_raycast_update()
 	var hand_touched_what = hand_raycast.get_collider()
+	var hand_touched_where = hand_raycast.get_collision_point()
 	
 	if hand_touched_what != null:
-		print(hand_touched_what)
+		$laser_pointer.position = hand_touched_where
+		#print(hand_touched_what)
 		if hand_touched_what.is_in_group("object"):
 			interact_prompt = true
 		else :
@@ -144,10 +150,16 @@ func _physics_process(delta):
 			current_sprint -= delta
 #
 	
+	if Input.is_action_just_pressed("scroll down"):
+		Events.emit_signal("item_scrolled_down")
+	if Input.is_action_just_pressed("scroll up"):
+		Events.emit_signal("item_scrolled_up")
+	
+	
 	if Input.is_action_just_pressed("E"):
 		var hand_tousched = $Head/camera_crane/hand_raycast.get_collision_point()
 		if hand_touched_what != null:
-#			print(hand_touched_what.get_groups())
+			#print(hand_touched_what)
 			if hand_touched_what.is_in_group("object"):
 				hand_touched_what.interact()
 				Events.emit_signal("object_interacted_with", hand_touched_what)
