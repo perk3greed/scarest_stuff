@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://byt3tqqcfi1f7"]
+
+[ext_resource type="Material" uid="uid://dyhysovbo4fep" path="res://loot_itmes/red_key.tres" id="1_mipsx"]
+[ext_resource type="Script" path="res://loot_itmes/interface_items/red_key_interface.gd" id="2_3ch7m"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_12b7f"]
+material = ExtResource("1_mipsx")
+
+[node name="MeshInstance3D" type="MeshInstance3D"]
+transform = Transform3D(0.4, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0, 0, 0)
+layers = 2
+mesh = SubResource("BoxMesh_12b7f")
+script = ExtResource("2_3ch7m")

@@ -10,8 +10,10 @@ signal lamp_distance_changed(lmp_dist)
 signal change_interace_visibility
 signal add_item(item)
 signal change_print_output
-signal item_scrolled_up
 signal item_scrolled_down
+signal item_scrolled_up
+signal display_inventory_item
+
 
 var interacted_object 
 
@@ -34,7 +36,7 @@ var player_inventory : Dictionary = {
 
 func _ready():
 	Events.connect("add_item", add_item_to_inventory)
-
+	add_item_to_inventory("hand")
 
 
 func add_item_to_inventory(item):
@@ -47,8 +49,30 @@ func add_item_to_inventory(item):
 		print(player_inventory)
 
 
+var inventory_array : Array
+var inv_size : int
+var current_active_array_place : float
 
 
+func show_inventory_scroll():
+	
+	inventory_array = Events.player_inventory.keys()
+	inv_size = inventory_array.size()
+	current_active_array_place = 0
+	Events.emit_signal("display_inventory_item")
+
+
+func _process(delta):
+	if Input.is_action_just_pressed("scroll down"):
+		if current_active_array_place > 0:
+			current_active_array_place -= 0.5
+			Events.emit_signal("item_scrolled_down")
+			print(current_active_array_place)
+	if Input.is_action_just_pressed("scroll up"):
+		if current_active_array_place < inv_size:
+			current_active_array_place += 0.5
+			Events.emit_signal("item_scrolled_up")
+			print(current_active_array_place)
 
 
 

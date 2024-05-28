@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://onohelxdqikv"]
+
+[ext_resource type="Script" path="res://loot_itmes/red_key.gd" id="1_2allx"]
+[ext_resource type="Material" uid="uid://dyhysovbo4fep" path="res://loot_itmes/red_key.tres" id="2_awg6g"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eovdf"]
+size = Vector3(0.6, 0.2, 0.3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_txxca"]
+material = ExtResource("2_awg6g")
+size = Vector3(0.6, 0.2, 0.3)
+
+[node name="RigidBody3D" type="RigidBody3D" groups=["decor", "object"]]
+collision_layer = 3
+script = ExtResource("1_2allx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_eovdf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_txxca")

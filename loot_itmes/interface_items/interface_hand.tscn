@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://uhnddg4f4qco"]
+
+[ext_resource type="Material" uid="uid://cabw15huxr1oj" path="res://characters/player_hands/right_hand_material_true.tres" id="1_ph47d"]
+[ext_resource type="Script" path="res://loot_itmes/interface_items/interface_hand.gd" id="2_dd5on"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_qi8ph"]
+material = ExtResource("1_ph47d")
+inner_radius = 0.81
+rings = 12
+ring_segments = 4
+
+[node name="int_hand" type="MeshInstance3D"]
+transform = Transform3D(0.2, 0, 0, 0, -8.74228e-09, -0.2, 0, 0.2, -8.74228e-09, 0, 0, 0)
+layers = 2
+mesh = SubResource("TorusMesh_qi8ph")
+script = ExtResource("2_dd5on")

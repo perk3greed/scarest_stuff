@@ -7,22 +7,7 @@ const JUMP_VELOCITY = 9
 var sensitivity = 0.01
 const sprint_time :float = 99
 var current_sprint :float = 0
-var shotgun_ammo :int = 200
-var current_recoil_active_pb : bool = false
-var current_recoil_active_shotgun : bool = false
-var shotgun_shot_active : bool = false
-var recoil_count : float = 0 
 
-var pb_shot_active : bool = false
-var pb_magazine :int = 8
-var pb_ammo : int = 260
-var pb_ads : bool = false
-var bp_magazine_max_capacity : int = 8
-var pb_magazine_difference : int
-
-
-var sword_owned :bool = false
-var shotgun_owned :bool = false
 const BOB_FREQ = 2.4
 const BOB_AMP = 0.08
 var t_bob = 0.0
@@ -40,12 +25,10 @@ var maxVerticalOffset = 5
 var target_pos
 var default_target_pos
 var light_on : bool = false
-var current_weapon : String 
-var current_inv_item : int 
-
 
 var floating_camera_active : bool = false
 var flying_active : bool = false
+var inv_calculated : bool = false
 
 @onready var head = $Head
 @onready var camera = $Head/camera_crane
@@ -56,8 +39,9 @@ var interact_prompt : bool
 
 signal action_use_pressed
 signal object_interacted_with(owner_of_node)
-signal item_scrolled_up
-signal item_scrolled_down
+signal item_scrolled
+signal display_inventory_item(item)
+
 
 func _ready():
 	Events.connect("change_current_camera", change_camera_to_floating)
@@ -66,6 +50,8 @@ func _ready():
 	$Head/SubViewportContainer.size = DisplayServer.window_get_size()
 
 func _process(delta):
+	
+	
 	if Input.is_action_just_pressed("F"):
 		if light_on == true:
 			$Head/camera_crane/SpotLight3D.light_energy = 0
@@ -100,10 +86,12 @@ func _process(delta):
 		if flying_active == true:
 			velocity.y += JUMP_VELOCITY
 	
+	
+	
 	camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-80), deg_to_rad(85))
 	camera.rotation.y = 0
 
-func _unhandled_input(event):	
+func _unhandled_input(event):
 	if Events.floating_camera_is_active == true:
 		return
 	if event is InputEventMouseMotion:
@@ -124,10 +112,15 @@ func _physics_process(delta):
 		$laser_pointer.position = hand_touched_where
 		#print(hand_touched_what)
 		if hand_touched_what.is_in_group("object"):
+			if inv_calculated == false:
+				Events.show_inventory_scroll()
+				inv_calculated = true
 			interact_prompt = true
 		else :
+			inv_calculated = false
 			interact_prompt = false
 	else:
+		inv_calculated = false
 		interact_prompt = false
 	
 	if not is_on_floor():
@@ -150,11 +143,6 @@ func _physics_process(delta):
 			current_sprint -= delta
 #
 	
-	if Input.is_action_just_pressed("scroll down"):
-		Events.emit_signal("item_scrolled_down")
-	if Input.is_action_just_pressed("scroll up"):
-		Events.emit_signal("item_scrolled_up")
-	
 	
 	if Input.is_action_just_pressed("E"):
 		var hand_tousched = $Head/camera_crane/hand_raycast.get_collision_point()
@@ -163,7 +151,6 @@ func _physics_process(delta):
 			if hand_touched_what.is_in_group("object"):
 				hand_touched_what.interact()
 				Events.emit_signal("object_interacted_with", hand_touched_what)
-
 
 	
 	

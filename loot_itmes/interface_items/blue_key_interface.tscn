@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://db4kyr4nkti63"]
+
+[ext_resource type="ArrayMesh" uid="uid://e3g3jojicsfm" path="res://loot_itmes/test_key_loot.tres" id="1_5xu5c"]
+[ext_resource type="Script" path="res://loot_itmes/interface_items/blue_key_interface.gd" id="2_62v7c"]
+
+[node name="MeshInstance3D" type="MeshInstance3D"]
+transform = Transform3D(0.2, 0, 0, 0, 0.05, 0, 0, 0, 0.1, 0, 0, 0)
+layers = 2
+mesh = ExtResource("1_5xu5c")
+script = ExtResource("2_62v7c")
