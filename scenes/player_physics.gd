@@ -22,6 +22,8 @@ var pb_magazine_difference : int
 
 var is_crouching = false
 var movement_multiplier = 1.0
+const PLAYER_COLL_SHAPE_STRAIGHT = preload("res://characters/player/player_coll_shape_straight.tres")
+const PLAYER_COLL_SHAPE_CROUCHED = preload("res://characters/player/player_coll_shape_crouched.tres")
 
 var sword_owned :bool = false
 var shotgun_owned :bool = false
@@ -64,6 +66,7 @@ signal item_scrolled_up
 signal item_scrolled_down
 
 func _ready():
+	collision.shape = PLAYER_COLL_SHAPE_STRAIGHT
 	Events.connect("change_current_camera", change_camera_to_floating)
 	Events.player_rid = get_rid()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -131,13 +134,15 @@ func _physics_process(delta):
 			if is_crouching:
 				print("beginning crouch")
 				movement_multiplier = 0.5
-				collision.scale.y = 0.5
+				#collision.scale.y = 0.5
+				collision.shape = PLAYER_COLL_SHAPE_CROUCHED
 				collision.position.y = 0.559 - 0.5
 				head.position.y = 1.643 - 0.5
 			elif not is_crouching:
 				print("ending crouch")
 				movement_multiplier = 1.0
-				collision.scale.y = 1.0
+				#collision.scale.y = 1.0
+				collision.shape = PLAYER_COLL_SHAPE_STRAIGHT
 				collision.position.y = 0.559
 				head.position.y = 1.643
 	

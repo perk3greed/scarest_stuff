@@ -3,11 +3,8 @@
 [ext_resource type="Script" path="res://scenes/player_physics.gd" id="1_pxgo1"]
 [ext_resource type="Shader" path="res://characters/player/ps1_camera_fade.gdshader" id="2_0ewle"]
 [ext_resource type="PackedScene" uid="uid://c1vhle00xj2b8" path="res://characters/player_hands/hands_camera_3d.tscn" id="2_2obeh"]
+[ext_resource type="Shape3D" uid="uid://bybjl8icltwod" path="res://characters/player/player_coll_shape_straight.tres" id="2_wha26"]
 [ext_resource type="PackedScene" uid="uid://b3p3kc4406kia" path="res://characters/player_hands/laser_pointer.tscn" id="3_niyui"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ipieo"]
-radius = 0.45
-height = 2.2109
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_20fxv"]
 shader = ExtResource("2_0ewle")
@@ -36,7 +33,7 @@ transform = Transform3D(-0.994314, 0, 0.10649, 0, 1, 0, -0.10649, 0, -0.994314, 
 
 [node name="player_cl" type="CollisionShape3D" parent="." groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55907, 0)
-shape = SubResource("CapsuleShape3D_ipieo")
+shape = ExtResource("2_wha26")
 
 [node name="Head" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.64348, -0.295)
