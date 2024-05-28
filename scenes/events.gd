@@ -13,10 +13,11 @@ signal change_print_output
 signal item_scrolled_down
 signal item_scrolled_up
 signal display_inventory_item
-
+signal clear_inventory_scroll
 
 var interacted_object 
-
+var current_requirement : String 
+var current_requirement_amount : int 
 var current_player_position : Vector3
 var player_rid : RID
 
@@ -58,7 +59,7 @@ func show_inventory_scroll():
 	
 	inventory_array = Events.player_inventory.keys()
 	inv_size = inventory_array.size()
-	current_active_array_place = 0
+	current_active_array_place = 0.5
 	Events.emit_signal("display_inventory_item")
 
 

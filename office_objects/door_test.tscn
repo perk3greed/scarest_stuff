@@ -14,7 +14,7 @@ texture_filter = 2
 material = SubResource("StandardMaterial3D_n6ds1")
 size = Vector3(0.1, 4, 5)
 
-[node name="StaticBody3D" type="StaticBody3D" groups=["object"]]
+[node name="StaticBody3D" type="StaticBody3D" groups=["hard_object"]]
 collision_layer = 3
 script = ExtResource("1_lr1iu")
 

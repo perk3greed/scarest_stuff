@@ -24,6 +24,12 @@ func _ready():
 	Events.connect("item_scrolled_down", scroll_inv_hud_down)
 	Events.connect("item_scrolled_up", scroll_inv_hud_up)
 	Events.connect("display_inventory_item", display_inv_hud)
+	Events.connect("clear_inventory_scroll", clear_hud_scrl)
+
+
+func clear_hud_scrl():
+	for child in $inventory.get_children():
+		child.queue_free()
 
 
 func _process(delta):

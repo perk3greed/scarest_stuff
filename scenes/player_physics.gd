@@ -13,6 +13,9 @@ var movement_multiplier = 1.0
 const PLAYER_COLL_SHAPE_STRAIGHT = preload("res://characters/player/player_coll_shape_straight.tres")
 const PLAYER_COLL_SHAPE_CROUCHED = preload("res://characters/player/player_coll_shape_crouched.tres")
 
+var offset_inv : int
+var active_item : String
+
 const BOB_FREQ = 2.4
 const BOB_AMP = 0.08
 var t_bob = 0.0
@@ -48,7 +51,7 @@ signal action_use_pressed
 signal object_interacted_with(owner_of_node)
 signal item_scrolled
 signal display_inventory_item(item)
-
+signal clear_inventory_scroll
 
 func _ready():
 	collision.shape = PLAYER_COLL_SHAPE_STRAIGHT
@@ -142,7 +145,7 @@ func _physics_process(delta):
 	if hand_touched_what != null:
 		$laser_pointer.position = hand_touched_where
 		#print(hand_touched_what)
-		if hand_touched_what.is_in_group("object"):
+		if hand_touched_what.is_in_group("hard_object"):
 			if inv_calculated == false:
 				Events.show_inventory_scroll()
 				inv_calculated = true
@@ -150,9 +153,14 @@ func _physics_process(delta):
 		else :
 			inv_calculated = false
 			interact_prompt = false
+			Events.emit_signal("clear_inventory_scroll")
 	else:
 		inv_calculated = false
 		interact_prompt = false
+		offset_inv = 0 
+		active_item = ""
+		Events.emit_signal("clear_inventory_scroll")
+	
 	
 	if not is_on_floor():
 		if flying_active == false:
@@ -180,6 +188,15 @@ func _physics_process(delta):
 			if hand_touched_what.is_in_group("object"):
 				hand_touched_what.interact()
 				Events.emit_signal("object_interacted_with", hand_touched_what)
+				
+			if hand_touched_what.is_in_group("hard_object"):
+				hand_touched_what.check_requirement()
+				offset_inv = int(Events.current_active_array_place) - 1 
+				active_item = Events.inventory_array[offset_inv]
+				if active_item == Events.current_requirement:
+					if Events.player_inventory[active_item] >= Events.current_requirement_amount:
+						hand_touched_what.interact()
+
 
 	var input_dir = Input.get_vector("A", "D", "W", "S")
 	var direction = (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
