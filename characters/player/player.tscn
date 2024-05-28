@@ -91,3 +91,11 @@ size = 8.0
 [node name="laser_pointer" parent="." instance=ExtResource("3_niyui")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.960557, 0)
 top_level = true
+
+[node name="upcheck" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.559, 0)
+
+[node name="RayCast3D" type="RayCast3D" parent="upcheck"]
+target_position = Vector3(0, 0.995, 0)
+debug_shape_custom_color = Color(1, 0.0666667, 0, 1)
+debug_shape_thickness = 4

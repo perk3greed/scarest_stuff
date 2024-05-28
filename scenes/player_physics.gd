@@ -20,6 +20,8 @@ var pb_ads : bool = false
 var bp_magazine_max_capacity : int = 8
 var pb_magazine_difference : int
 
+var is_crouching = false
+var movement_multiplier = 1.0
 
 var sword_owned :bool = false
 var shotgun_owned :bool = false
@@ -53,6 +55,8 @@ var flying_active : bool = false
 var interact_prompt : bool
 @onready var real_camera =$Head/camera_crane/Camera3D
 @onready var hand_raycast = $Head/camera_crane/hand_raycast
+@onready var upcheck = $upcheck/RayCast3D
+@onready var collision = $player_cl
 
 signal action_use_pressed
 signal object_interacted_with(owner_of_node)
@@ -116,6 +120,27 @@ func _physics_process(delta):
 	if Events.floating_camera_is_active == true:
 		return
 	
+	# crouching
+	if Input.is_action_just_pressed("crouch"):
+		upcheck.force_raycast_update()
+		if is_crouching and not upcheck.is_colliding():
+			is_crouching = false
+		elif not is_crouching:
+			is_crouching = true
+		if not upcheck.is_colliding():
+			if is_crouching:
+				print("beginning crouch")
+				movement_multiplier = 0.5
+				collision.scale.y = 0.5
+				collision.position.y = 0.559 - 0.5
+				head.position.y = 1.643 - 0.5
+			elif not is_crouching:
+				print("ending crouch")
+				movement_multiplier = 1.0
+				collision.scale.y = 1.0
+				collision.position.y = 0.559
+				head.position.y = 1.643
+	
 	hand_raycast.force_raycast_update()
 	var hand_touched_what = hand_raycast.get_collider()
 	var hand_touched_where = hand_raycast.get_collision_point()
@@ -140,21 +165,18 @@ func _physics_process(delta):
 	if Input.is_action_pressed("SHIFT"):
 		if sprint_time > current_sprint:
 			current_sprint += delta
-			speed = SPRINT_SPEED
+			speed = SPRINT_SPEED * movement_multiplier
 		else :
-			speed = WALK_SPEED
-
+			speed = WALK_SPEED * movement_multiplier
 	else:
-		speed = WALK_SPEED
+		speed = WALK_SPEED * movement_multiplier
 		if current_sprint > 0:
 			current_sprint -= delta
-#
 	
 	if Input.is_action_just_pressed("scroll down"):
 		Events.emit_signal("item_scrolled_down")
 	if Input.is_action_just_pressed("scroll up"):
 		Events.emit_signal("item_scrolled_up")
-	
 	
 	if Input.is_action_just_pressed("E"):
 		var hand_tousched = $Head/camera_crane/hand_raycast.get_collision_point()
@@ -163,10 +185,6 @@ func _physics_process(delta):
 			if hand_touched_what.is_in_group("object"):
 				hand_touched_what.interact()
 				Events.emit_signal("object_interacted_with", hand_touched_what)
-
-
-	
-	
 	
 	var input_dir = Input.get_vector("A", "D", "W", "S")
 	var direction = (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
