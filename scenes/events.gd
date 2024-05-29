@@ -26,6 +26,7 @@ var lamp_level_selected : int
 var amount_of_lamps_on : int 
 
 var current_inventory_item : int 
+var inv_menu_open : bool
 
 var printed_log : String
 

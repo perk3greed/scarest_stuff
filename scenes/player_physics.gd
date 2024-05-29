@@ -142,25 +142,6 @@ func _physics_process(delta):
 	var hand_touched_what = hand_raycast.get_collider()
 	var hand_touched_where = hand_raycast.get_collision_point()
 	
-	if hand_touched_what != null:
-		$laser_pointer.position = hand_touched_where
-		#print(hand_touched_what)
-		if hand_touched_what.is_in_group("hard_object"):
-			if inv_calculated == false:
-				Events.show_inventory_scroll()
-				inv_calculated = true
-			interact_prompt = true
-		else :
-			inv_calculated = false
-			interact_prompt = false
-			Events.emit_signal("clear_inventory_scroll")
-	else:
-		inv_calculated = false
-		interact_prompt = false
-		offset_inv = 0 
-		active_item = ""
-		Events.emit_signal("clear_inventory_scroll")
-	
 	
 	if not is_on_floor():
 		if flying_active == false:
@@ -182,7 +163,8 @@ func _physics_process(delta):
 	
 
 	if Input.is_action_just_pressed("E"):
-		var hand_tousched = $Head/camera_crane/hand_raycast.get_collision_point()
+		if Events.inv_menu_open == true:
+			return
 		if hand_touched_what != null:
 			#print(hand_touched_what)
 			if hand_touched_what.is_in_group("object"):
@@ -191,6 +173,9 @@ func _physics_process(delta):
 				
 			if hand_touched_what.is_in_group("hard_object"):
 				hand_touched_what.check_requirement()
+				var checknumb = Events.current_active_array_place - int(Events.current_active_array_place)
+				if checknumb > 0 :
+					return
 				offset_inv = int(Events.current_active_array_place) - 1 
 				active_item = Events.inventory_array[offset_inv]
 				if active_item == Events.current_requirement:
@@ -233,6 +218,32 @@ func _physics_process(delta):
 			var csn = collsion_speed.normalized()*0.3
 			collided_with.apply_impulse(csn,collision_point)
 	
+	
+	if hand_touched_what != null:
+		if Events.inv_menu_open == true:
+			return
+		$laser_pointer.position = hand_touched_where
+		#print(hand_touched_what)
+		if hand_touched_what.is_in_group("hard_object"):
+			if inv_calculated == false:
+				Events.show_inventory_scroll()
+				inv_calculated = true
+			interact_prompt = true
+		else :
+			inv_calculated = false
+			interact_prompt = false
+			Events.emit_signal("clear_inventory_scroll")
+	else:
+		inv_calculated = false
+		interact_prompt = false
+		offset_inv = 0 
+		active_item = ""
+		Events.emit_signal("clear_inventory_scroll")
+	
+
+
+
+
 
 
 func _headbob(time) -> Vector3:
